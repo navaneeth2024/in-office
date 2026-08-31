@@ -1,0 +1,11 @@
+{
+  "name": "In-Office",
+  "short_name": "In-Office",
+  "description": "Plan and track in-office, remote, leave, and holiday days.",
+  "start_url": "/in-office/",
+  "scope": "/in-office/",
+  "display": "standalone",
+  "background_color": "#F7F4EE",
+  "theme_color": "#355C7D",
+  "icons": []
+}
