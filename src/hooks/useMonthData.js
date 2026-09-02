@@ -1,6 +1,6 @@
 import { useCallback, useMemo, useState } from 'react'
 import { buildMonthGrid } from '../utils/dateHelpers.js'
-import { loadAllDays, setDayStatus as persistDayStatus, replaceAllDays } from '../utils/storage.js'
+import { loadAllDays, setDayStatus as persistDayStatus, replaceAllDays, clearAllDays } from '../utils/storage.js'
 import { effectiveStatus, STATUS_ORDER } from '../utils/statusTypes.js'
 
 export function useMonthData(year, monthIndex) {
@@ -28,6 +28,11 @@ export function useMonthData(year, monthIndex) {
     setAllDays({ ...updated })
   }, [])
 
+  const clearAll = useCallback(() => {
+    const updated = clearAllDays()
+    setAllDays({ ...updated })
+  }, [])
+
   const monthStats = useMemo(() => {
     const counts = Object.fromEntries(STATUS_ORDER.map((s) => [s, 0]))
     let planned = 0
@@ -41,5 +46,5 @@ export function useMonthData(year, monthIndex) {
     return { counts, planned, totalDays: days.filter((d) => d.inCurrentMonth).length }
   }, [days])
 
-  return { days, setStatus, monthStats, allDays, importAll }
+  return { days, setStatus, monthStats, allDays, importAll, clearAll }
 }

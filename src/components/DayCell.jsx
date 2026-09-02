@@ -32,8 +32,8 @@ export default function DayCell({ day, onSetStatus }) {
         aria-expanded={open}
         className={`flex aspect-square w-full flex-col items-start justify-between rounded-md border p-1.5 text-left transition-colors sm:p-2 ${
           day.inCurrentMonth ? 'border-ink/10' : 'border-transparent opacity-35'
-        } ${classes ? classes.bg : 'bg-white hover:bg-ink/5'} ${
-          day.isToday ? 'ring-2 ring-office ring-offset-1' : ''
+        } ${classes ? classes.bg : 'bg-panel hover:bg-ink/10'} ${
+          day.isToday ? 'ring-2 ring-office ring-offset-1 ring-offset-paper' : ''
         }`}
       >
         <span className={`text-xs font-medium sm:text-sm ${classes ? classes.text : 'text-ink/60'}`}>

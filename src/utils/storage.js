@@ -32,3 +32,8 @@ export function replaceAllDays(data) {
   saveAllDays(data)
   return data
 }
+
+export function clearAllDays() {
+  localStorage.removeItem(STORAGE_KEY)
+  return {}
+}

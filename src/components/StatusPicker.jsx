@@ -3,7 +3,7 @@ import { STATUS_TYPES, STATUS_ORDER, STATUS_CLASSES } from '../utils/statusTypes
 export default function StatusPicker({ dateLabel, currentStatus, onSelect, onClear, onClose }) {
   return (
     <div
-      className="absolute z-20 mt-1 w-48 rounded-lg border border-ink/10 bg-white p-2 shadow-lg"
+      className="absolute z-20 mt-1 w-48 rounded-lg border border-ink/10 bg-panel p-2 shadow-lg shadow-black/40"
       role="menu"
     >
       <p className="px-2 pb-2 pt-1 text-sm font-medium text-ink/70">{dateLabel}</p>

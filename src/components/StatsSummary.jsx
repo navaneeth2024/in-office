@@ -7,7 +7,6 @@ export default function StatsSummary({ stats }) {
         const type = STATUS_TYPES[key]
         const classes = STATUS_CLASSES[key]
         const count = stats.counts[key]
-        const pct = stats.totalDays ? Math.round((count / stats.totalDays) * 100) : 0
         return (
           <div key={key} className={`rounded-lg border border-ink/10 p-3 ${classes.bg}`}>
             <div className="flex items-center gap-1.5">
@@ -16,7 +15,7 @@ export default function StatsSummary({ stats }) {
             </div>
             <p className={`mt-1 font-display text-2xl ${classes.text}`}>
               {count}
-              <span className="ml-1 text-xs font-body font-normal text-ink/40">/ {pct}%</span>
+              <span className="ml-1 text-xs font-body font-normal text-ink/40">/ {stats.totalDays}</span>
             </p>
           </div>
         )

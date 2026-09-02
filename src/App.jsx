@@ -11,7 +11,7 @@ export default function App() {
   const [year, setYear] = useState(today.getFullYear())
   const [monthIndex, setMonthIndex] = useState(today.getMonth())
 
-  const { days, setStatus, monthStats, allDays, importAll } = useMonthData(year, monthIndex)
+  const { days, setStatus, monthStats, allDays, importAll, clearAll } = useMonthData(year, monthIndex)
 
   function shiftMonth(delta) {
     const next = new Date(year, monthIndex + delta, 1)
@@ -65,7 +65,7 @@ export default function App() {
 
       <div className="mt-8 flex items-center justify-between border-t border-ink/10 pt-4">
         <p className="text-xs text-ink/40">Data is stored only on this device.</p>
-        <BackupControls allDays={allDays} onImport={importAll} />
+        <BackupControls allDays={allDays} onImport={importAll} onClearAll={clearAll} />
       </div>
     </div>
   )

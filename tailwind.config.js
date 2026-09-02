@@ -4,17 +4,18 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        display: ['"Fraunces"', 'serif'],
-        body: ['"IBM Plex Sans"', 'sans-serif'],
+        display: ['"DM Mono"', 'monospace'],
+        body: ['"DM Sans"', 'sans-serif'],
       },
       colors: {
-        paper: '#F7F4EE',
-        ink: '#2A2723',
-        office: { DEFAULT: '#355C7D', bg: '#E4EBF1' },
-        remote: { DEFAULT: '#6C8E68', bg: '#E7EFE4' },
-        leave: { DEFAULT: '#A0616A', bg: '#F2E3E4' },
-        holiday: { DEFAULT: '#B8891F', bg: '#F3EAD3' },
-        weekend: { DEFAULT: '#9C958A', bg: '#EAE7E0' },
+        paper: '#16181C',
+        panel: '#1D2126',
+        ink: '#ECEAE6',
+        office: { DEFAULT: '#7DA6D9', bg: '#1D2A36' },
+        remote: { DEFAULT: '#8FBF85', bg: '#1E2A1D' },
+        leave: { DEFAULT: '#D98B94', bg: '#2C1E20' },
+        holiday: { DEFAULT: '#E0B84D', bg: '#2E2617' },
+        weekend: { DEFAULT: '#A8A29A', bg: '#232323' },
       },
     },
   },
