@@ -1,5 +1,6 @@
 import { useRef, useState } from 'react'
 import { exportBackup, importBackup } from '../utils/exportImport.js'
+import ConfirmModal from './ConfirmModal.jsx'
 
 function DownloadIcon() {
   return (
@@ -36,6 +37,7 @@ function TrashIcon() {
 export default function BackupControls({ allDays, onImport, onClearAll }) {
   const fileInputRef = useRef(null)
   const [message, setMessage] = useState(null)
+  const [confirmOpen, setConfirmOpen] = useState(false)
 
   async function handleFileChange(e) {
     const file = e.target.files?.[0]
@@ -52,12 +54,9 @@ export default function BackupControls({ allDays, onImport, onClearAll }) {
     }
   }
 
-  function handleClear() {
-    const confirmed = window.confirm(
-      'Clear all saved data on this device? This cannot be undone. Consider downloading a backup first.',
-    )
-    if (!confirmed) return
+  function confirmClear() {
     onClearAll()
+    setConfirmOpen(false)
     setMessage({ type: 'ok', text: 'Storage cleared.' })
     setTimeout(() => setMessage(null), 4000)
   }
@@ -81,7 +80,7 @@ export default function BackupControls({ allDays, onImport, onClearAll }) {
         <UploadIcon />
       </button>
       <button
-        onClick={handleClear}
+        onClick={() => setConfirmOpen(true)}
         title="Clear saved data"
         aria-label="Clear saved data"
         className="rounded-md p-2 text-leave/70 transition-colors hover:bg-leave/20 hover:text-leave"
@@ -100,6 +99,14 @@ export default function BackupControls({ allDays, onImport, onClearAll }) {
           {message.text}
         </span>
       )}
+      <ConfirmModal
+        open={confirmOpen}
+        title="Clear saved data?"
+        message="This removes all statuses saved on this device and cannot be undone. Consider downloading a backup first."
+        confirmLabel="Clear data"
+        onConfirm={confirmClear}
+        onCancel={() => setConfirmOpen(false)}
+      />
     </div>
   )
 }
