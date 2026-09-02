@@ -1,4 +1,5 @@
 import { STATUS_TYPES, STATUS_ORDER, STATUS_CLASSES } from '../utils/statusTypes.js'
+import StatusIcon from './StatusIcon.jsx'
 
 export default function StatsSummary({ stats }) {
   return (
@@ -10,7 +11,7 @@ export default function StatsSummary({ stats }) {
         return (
           <div key={key} className={`rounded-lg border border-ink/10 p-3 ${classes.bg}`}>
             <div className="flex items-center gap-1.5">
-              <span className={`h-2 w-2 rounded-full ${classes.dot}`} aria-hidden="true" />
+              <StatusIcon status={key} className={`h-3.5 w-3.5 ${classes.text}`} />
               <span className="text-xs font-medium text-ink/60">{type.label}</span>
             </div>
             <p className={`mt-1 font-display text-2xl ${classes.text}`}>

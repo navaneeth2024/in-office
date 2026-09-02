@@ -14,8 +14,8 @@ function DownloadIcon() {
 function UploadIcon() {
   return (
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M12 21V9" />
-      <path d="M7 14l5-5 5 5" />
+      <path d="M12 15V3" />
+      <path d="M7 8l5-5 5 5" />
       <path d="M4 19h16" />
     </svg>
   )
@@ -84,7 +84,7 @@ export default function BackupControls({ allDays, onImport, onClearAll }) {
         onClick={handleClear}
         title="Clear saved data"
         aria-label="Clear saved data"
-        className="rounded-md p-2 text-ink/50 transition-colors hover:bg-leave/20 hover:text-leave"
+        className="rounded-md p-2 text-leave/70 transition-colors hover:bg-leave/20 hover:text-leave"
       >
         <TrashIcon />
       </button>

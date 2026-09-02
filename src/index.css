@@ -2,12 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
+:root {
+  --color-paper: 22 24 28;
+  --color-panel: 29 33 38;
+  --color-ink: 236 234 230;
+  --color-office: 125 166 217;
+  --color-office-bg: 29 42 54;
+  --color-remote: 143 191 133;
+  --color-remote-bg: 30 42 29;
+  --color-leave: 217 139 148;
+  --color-leave-bg: 44 30 32;
+  --color-holiday: 224 184 77;
+  --color-holiday-bg: 46 38 23;
+  --color-weekend: 168 162 154;
+  --color-weekend-bg: 35 35 35;
   color-scheme: dark;
 }
 
+.light {
+  --color-paper: 247 244 238;
+  --color-panel: 255 255 255;
+  --color-ink: 42 39 35;
+  --color-office: 53 92 125;
+  --color-office-bg: 228 235 241;
+  --color-remote: 108 142 104;
+  --color-remote-bg: 231 239 228;
+  --color-leave: 160 97 106;
+  --color-leave-bg: 242 227 228;
+  --color-holiday: 184 137 31;
+  --color-holiday-bg: 243 234 211;
+  --color-weekend: 156 149 138;
+  --color-weekend-bg: 234 231 224;
+  color-scheme: light;
+}
+
 body {
-  @apply bg-paper text-ink font-body;
+  @apply bg-paper text-ink font-body transition-colors duration-200;
 }
 
 :focus-visible {

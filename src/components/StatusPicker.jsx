@@ -1,4 +1,5 @@
 import { STATUS_TYPES, STATUS_ORDER, STATUS_CLASSES } from '../utils/statusTypes.js'
+import StatusIcon from './StatusIcon.jsx'
 
 export default function StatusPicker({ dateLabel, currentStatus, onSelect, onClear, onClose }) {
   return (
@@ -24,7 +25,7 @@ export default function StatusPicker({ dateLabel, currentStatus, onSelect, onCle
                 active ? `${classes.bg} font-medium` : ''
               }`}
             >
-              <span className={`h-2.5 w-2.5 rounded-full ${classes.dot}`} aria-hidden="true" />
+              <StatusIcon status={key} className={`h-3.5 w-3.5 ${classes.text}`} />
               {type.label}
             </button>
           )

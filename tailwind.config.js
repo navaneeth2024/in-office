@@ -8,14 +8,29 @@ export default {
         body: ['"DM Sans"', 'sans-serif'],
       },
       colors: {
-        paper: '#16181C',
-        panel: '#1D2126',
-        ink: '#ECEAE6',
-        office: { DEFAULT: '#7DA6D9', bg: '#1D2A36' },
-        remote: { DEFAULT: '#8FBF85', bg: '#1E2A1D' },
-        leave: { DEFAULT: '#D98B94', bg: '#2C1E20' },
-        holiday: { DEFAULT: '#E0B84D', bg: '#2E2617' },
-        weekend: { DEFAULT: '#A8A29A', bg: '#232323' },
+        paper: 'rgb(var(--color-paper) / <alpha-value>)',
+        panel: 'rgb(var(--color-panel) / <alpha-value>)',
+        ink: 'rgb(var(--color-ink) / <alpha-value>)',
+        office: {
+          DEFAULT: 'rgb(var(--color-office) / <alpha-value>)',
+          bg: 'rgb(var(--color-office-bg) / <alpha-value>)',
+        },
+        remote: {
+          DEFAULT: 'rgb(var(--color-remote) / <alpha-value>)',
+          bg: 'rgb(var(--color-remote-bg) / <alpha-value>)',
+        },
+        leave: {
+          DEFAULT: 'rgb(var(--color-leave) / <alpha-value>)',
+          bg: 'rgb(var(--color-leave-bg) / <alpha-value>)',
+        },
+        holiday: {
+          DEFAULT: 'rgb(var(--color-holiday) / <alpha-value>)',
+          bg: 'rgb(var(--color-holiday-bg) / <alpha-value>)',
+        },
+        weekend: {
+          DEFAULT: 'rgb(var(--color-weekend) / <alpha-value>)',
+          bg: 'rgb(var(--color-weekend-bg) / <alpha-value>)',
+        },
       },
     },
   },

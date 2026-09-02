@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
 import StatusPicker from './StatusPicker.jsx'
-import { STATUS_CLASSES } from '../utils/statusTypes.js'
+import StatusIcon from './StatusIcon.jsx'
+import { STATUS_CLASSES, STATUS_TYPES } from '../utils/statusTypes.js'
 
 export default function DayCell({ day, onSetStatus }) {
   const [open, setOpen] = useState(false)
@@ -40,16 +41,15 @@ export default function DayCell({ day, onSetStatus }) {
           {day.date.getDate()}
         </span>
         {classes && (
-          <span className={`hidden text-[10px] font-medium sm:block ${classes.text}`}>
-            {day.status === 'office' && 'Office'}
-            {day.status === 'remote' && 'Remote'}
-            {day.status === 'leave' && 'Leave'}
-            {day.status === 'holiday' && 'Holiday'}
-            {day.status === 'weekend' && 'Weekend'}
+          <span className={`hidden items-center gap-1 text-[10px] font-medium sm:flex ${classes.text}`}>
+            <StatusIcon status={day.status} className="h-3 w-3" />
+            {STATUS_TYPES[day.status].label}
           </span>
         )}
         {classes && (
-          <span className={`h-1.5 w-1.5 rounded-full sm:hidden ${classes.dot}`} aria-hidden="true" />
+          <span className={`sm:hidden ${classes.text}`}>
+            <StatusIcon status={day.status} className="h-3.5 w-3.5" />
+          </span>
         )}
       </button>
       {open && (
