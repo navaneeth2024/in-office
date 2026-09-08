@@ -3,6 +3,7 @@ import Calendar from './components/Calendar.jsx'
 import StatsSummary from './components/StatsSummary.jsx'
 import BackupControls from './components/BackupControls.jsx'
 import ThemeToggle from './components/ThemeToggle.jsx'
+import SuggestedHolidaysModal from './components/SuggestedHolidaysModal.jsx'
 import { useMonthData } from './hooks/useMonthData.js'
 import { useTheme } from './hooks/useTheme.js'
 import { MONTH_NAMES } from './utils/dateHelpers.js'
@@ -15,6 +16,11 @@ export default function App() {
 
   const { days, setStatus, monthStats, allDays, importAll, clearAll } = useMonthData(year, monthIndex)
   const { theme, toggleTheme } = useTheme()
+  const [holidaysOpen, setHolidaysOpen] = useState(false)
+
+  function applyHolidays(dates) {
+    dates.forEach((date) => setStatus(date, 'holiday'))
+  }
 
   function shiftMonth(delta) {
     const next = new Date(year, monthIndex + delta, 1)
@@ -65,7 +71,15 @@ export default function App() {
       <Calendar days={days} onSetStatus={setStatus} />
 
       <div className="mt-8">
-        <h3 className="mb-3 text-sm font-medium text-ink/50">This month</h3>
+        <div className="mb-3 flex items-center justify-between">
+          <h3 className="text-sm font-medium text-ink/50">This month</h3>
+          <button
+            onClick={() => setHolidaysOpen(true)}
+            className="text-sm font-medium text-ink/50 underline decoration-ink/20 underline-offset-4 hover:text-ink"
+          >
+            Holidays
+          </button>
+        </div>
         <StatsSummary stats={monthStats} />
       </div>
 
@@ -73,6 +87,13 @@ export default function App() {
         <p className="text-xs text-ink/40">Data is stored only on this device.</p>
         <BackupControls allDays={allDays} onImport={importAll} onClearAll={clearAll} />
       </div>
+
+      <SuggestedHolidaysModal
+        open={holidaysOpen}
+        allDays={allDays}
+        onApply={applyHolidays}
+        onClose={() => setHolidaysOpen(false)}
+      />
     </div>
   )
 }
