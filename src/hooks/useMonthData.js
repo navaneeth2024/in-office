@@ -43,7 +43,9 @@ export function useMonthData(year, monthIndex) {
         planned += 1
       }
     }
-    return { counts, planned, totalDays: days.filter((d) => d.inCurrentMonth).length }
+    const totalDays = days.filter((d) => d.inCurrentMonth).length
+    const workingDays = totalDays - counts.weekend - counts.holiday - counts.leave
+    return { counts, planned, totalDays, workingDays }
   }, [days])
 
   return { days, setStatus, monthStats, allDays, importAll, clearAll }
