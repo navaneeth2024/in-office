@@ -6,7 +6,7 @@ import { STATUS_CLASSES, STATUS_TYPES } from '../utils/statusTypes.js'
 import { getHolidayInfo } from '../utils/holidaysData.js'
 import { HOLIDAY_THEMES } from '../utils/holidayThemes.js'
 
-export default function DayCell({ day, onSetStatus }) {
+export default function DayCell({ day, onSetStatus, colorMode }) {
   const [open, setOpen] = useState(false)
   const cellRef = useRef(null)
 
@@ -38,7 +38,8 @@ export default function DayCell({ day, onSetStatus }) {
   // Holiday info is looked up regardless of current status, so the picker
   // can hint "This is Christmas" even on an otherwise-blank day.
   const holidayInfo = getHolidayInfo(day.key)
-  const theme = day.status === 'holiday' && holidayInfo?.theme ? HOLIDAY_THEMES[holidayInfo.theme] : null
+  const themeSet = day.status === 'holiday' && holidayInfo?.theme ? HOLIDAY_THEMES[holidayInfo.theme] : null
+  const theme = themeSet ? themeSet[colorMode === 'light' ? 'light' : 'dark'] : null
 
   const cellStyle = theme
     ? { backgroundImage: `linear-gradient(135deg, ${theme.bgFrom}, ${theme.bgTo})`, borderColor: `${theme.border}88` }
@@ -66,10 +67,12 @@ export default function DayCell({ day, onSetStatus }) {
         </span>
 
         {theme && (
-          <HolidayThemeIcon
-            themeKey={holidayInfo.theme}
-            className="absolute inset-x-0 bottom-1 mx-auto h-7 w-7 opacity-90 sm:h-9 sm:w-9"
-          />
+          <div className="flex flex-1 items-center justify-center self-stretch">
+            <HolidayThemeIcon
+              themeKey={holidayInfo.theme}
+              className="h-6 w-6 opacity-90 sm:h-8 sm:w-8"
+            />
+          </div>
         )}
 
         {!theme && classes && (
@@ -85,10 +88,10 @@ export default function DayCell({ day, onSetStatus }) {
         )}
         {theme && (
           <span
-            className="relative z-10 hidden text-[10px] font-medium sm:block"
+            className="hidden shrink-0 truncate text-[10px] font-medium sm:block"
             style={accentStyle}
           >
-            {theme.label}
+            {themeSet.label}
           </span>
         )}
       </button>

@@ -68,7 +68,7 @@ export default function App() {
         </button>
       </div>
 
-      <Calendar days={days} onSetStatus={setStatus} />
+      <Calendar days={days} onSetStatus={setStatus} colorMode={theme} />
 
       <div className="mt-8">
         <div className="mb-3 flex items-center justify-between">
